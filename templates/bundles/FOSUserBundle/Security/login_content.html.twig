@@ -1,0 +1,65 @@
+{#{% extends 'base.html.twig' %}#}
+{% trans_default_domain 'FOSUserBundle' %}
+
+
+{% block body %}
+	<div class="login-form">
+		<form action="{{ path("fos_user_security_check") }}" method="post">
+			{% if csrf_token %}
+				<input type="hidden" name="_csrf_token" value="{{ csrf_token }}"/>
+			{% endif %}
+			<h2 class="text-center">Sign in</h2>
+			<div class="text-center social-btn">
+				<a href="{{ path('connect_facebook_start') }}" class="btn btn-primary btn-block">
+					<i class="fa fa-facebook"></i>
+					Sign in with
+					<b>Facebook</b>
+				</a>
+				<a href="#" class="btn btn-info btn-block">
+					<i class="fa fa-twitter"></i>
+					Sign in with
+					<b>Twitter</b>
+				</a>
+				<a href="{{ path('connect_google_start') }}" class="btn btn-danger btn-block">
+					<i class="fa fa-google"></i>
+					Sign in with
+					<b>Google</b>
+				</a>
+			</div>
+			<div class="or-seperator">
+				<i>OU</i>
+				{% if error %}
+					<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+				{% endif %}
+			</div>
+			<div class="form-group">
+				<div class="input-group">
+					<span class="input-group-addon">
+						<i class="fa fa-user"></i>
+					</span>
+					<input type="text" class="form-control" id="username" name="_username" value="{{ last_username }}" required="required" autocomplete="username"/>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="input-group">
+					<span class="input-group-addon">
+						<i class="fa fa-lock"></i>
+					</span>
+					<input type="password" id="password" class="form-control" name="_password" required="required" autofocus="autofocus">
+				</div>
+			</div>
+			<div class="form-group">
+				<button type="submit" class="btn btn-success btn-block login-btn">Valider</button>
+			</div>
+			<div class="clearfix">
+				<input type="checkbox" id="remember_me" name="_remember_me" value="on" checked/>
+				<a href="{{ path('fos_user_resetting_request') }}" class="pull-right text-success">Mot de passe oublié?</a>
+			</div>
+
+		</form>
+		<div class="hint-text small">Vous n'avez pas de compte?
+			<a href="/register" class="text-success">S'inscrire maintenant!</a>
+		</div>
+	</div>
+
+{% endblock %}

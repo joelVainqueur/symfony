@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta
+		charset="UTF-8">
+		<!-- Bootstrap CSS -->
+		
+		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+		<link rel="stylesheet" href="  https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link href="{{ asset('/css/style.css') }}" type="text/css" rel="stylesheet" />
+		<link href="{{ asset('/css/bootstrap.css') }}" type="text/css" rel="stylesheet" />
+		<link href="{{ asset('/css/bootstrap-grid.css') }}" type="text/css" rel="stylesheet" />
+		
+	
+		<title>
+			{% block title %}Bienvenue!
+			{% endblock %}
+		</title>
+		{% block stylesheets %}{% endblock %}
+	</head>
+
+	<body>
+		<div class="container">
+			<nav class="navbar navbar-expand-sm navbar-info ">
+				<div class="container">
+					<a class="navbar-brand js-scroll-trigger" href="#page-top">MonMucisien</a>
+					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon">Menu</span>
+					</button>
+					<div class="collapse navbar-collapse" id="navbarResponsive">
+						<ul class="navbar-nav ml-auto">
+							<li class="nav-item">
+								<a class="nav-link js-scroll-trigger" href="/">Accueil</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link js-scroll-trigger" href="#annonces">Toutes les annonces</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link js-scroll-trigger" href="#annonces">Déposer une annonce</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link js-scroll-trigger" href="/profile">Mon Compte</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link js-scroll-trigger" href="#premium">Premium</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
+							</li>
+							<li class="nav-item dropdown ml-5">
+						
+							
+								{% if app.user %}
+									<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">{{ app.user.username }}</a>
+									<div class="dropdown-menu">
+										<a href="/profile" class="dropdown-item">Profile</a>
+										<div class="dropdown-divider"></div>
+										<a href="/logout" class="dropdown-item">Déconnexion</a>
+									</div>
+								{% else %}
+									<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="/login">Identifiant</a>
+									<div class="dropdown-menu">
+										<a href="/register" class="dropdown-item">Créer un compte</a>
+										<a href="/login" class="dropdown-item">Se connecter</a>
+									</div>
+								{% endif %}
+							</li>
+
+						</ul>
+					</div>
+				</div>
+			</nav>
+		</div>
+		{% block body %}{% endblock %}
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+		<script src="js/style.js"></script>
+		<script src="{{asset('js/style.js')}}"></script>
+		{% block javascripts %}{% endblock %}
+	</body>
+
+</html>

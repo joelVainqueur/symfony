@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Page d'accueil!{% endblock %}
+
+{% block body %}
+	<div class="jumbotron ">
+		<div class="container">
+			{{form_start(form)}}
+			<div class="row">
+				<div class="col-md-3">{{form_row(form.name)}}</div>
+				<div class="col-md-3">{{form_row(form.minPrice)}}</div>
+				<div class="col-md-3">{{form_row(form.maxPrice)}}</div>
+				<div class="row">
+					<div class="col">
+						<button class="btn btn-primary">Recherche</button>
+					</div>
+				</div>
+
+			</div>
+			{{form_end(form)}}
+			{# <a class="btn btn-primary btn-lg" href="Jumbo action link" role="button">Jumbo action name</a> #}
+		</div>
+	</div>
+	<div class="container mt-4">
+		{% for annonce in annonces %}
+			{% include "annonce/_annonce.html.twig" %}
+		{% endfor %}
+		<div class="container">
+			{{ knp_pagination_render(annonces) }}
+		</div>
+	</div>
+
+{% endblock %}

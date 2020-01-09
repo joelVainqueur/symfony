@@ -1,0 +1,72 @@
+{% trans_default_domain 'FOSUserBundle' %}
+{% block body %}
+	<style>
+		.title_left {
+			background-color: #218838;
+			color: #FFFFFF;
+			display: block;
+			float: left;
+			font-weight: bold;
+			height: 27px;
+			padding: 5px 20px;
+
+		}
+		.title_arrow {
+			float: left;
+			width: 16px;
+			height: 27px;
+			background-image: url("/images/annonces/title_box.png");
+			background-repeat: no-repeat;
+			background-position: top;
+			display: block;
+		}
+	</style>
+	<div class="container">
+		<div class="card card-register mx-auto mt-5">
+			<div class="bg-success text-center">
+				<h3 class="text-white">Inscription</h3>
+			</div>
+			<div class="card-body">
+				<div class="container">
+					<div class="row">
+						<div class="title_box">
+							<div class="title_left">Lieux</div>
+						</div>
+						<div class="title_arrow"></div>
+					</div>
+					{{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+
+					<div class="row">
+						<div class=" col">{{form_row(form.phone)}}</div>
+						<div class="col">{{form_row(form.cities)}}</div>
+						<div class="col">{{form_row(form.codePostal)}}</div>
+					</div>
+
+					<div class="row">
+						<div class="title_box">
+							<div class="title_left">Vos informations</div>
+						</div>
+						<div class="title_arrow"></div>
+					</div>
+					<div class="row">
+
+						<div class="col">{{form_row(form.username)}}</div>
+						<div class="col">{{form_row(form.email)}}</div>
+						<div class="col">{{ form_row(form.plainPassword.first) }}</div>
+						<div class="col">{{ form_row(form.plainPassword.second) }}</div>
+
+					</div>
+
+					<div class="row">
+						<div class="col-md-6">
+							<input class="btn btn-success" type="submit" value="{{ 'registration.submit'|trans }}"/>
+						</div>
+					</div>
+				</div>
+			</div>
+			{{ form_end(form) }}
+
+
+		</div>
+	</div>
+</div>{% endblock %}</body>

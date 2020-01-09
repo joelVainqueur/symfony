@@ -1,0 +1,32 @@
+<div class="container mt-4">
+	<div class="card">
+		<div class="row">
+			{% if annonce.photopath %}
+			<div class="col-sm-2">
+				{# <img class="card-img-top" src="{{vich_uploader_asset(annonce, 'photopath')  }}" style="color:red; width:150px; height:auto" alt="card-img-top"> #}
+				<img class="card-img-top" src="/images/annonces/{{annonce.photopath}}"
+					style="color:red; width:100%; height:auto" alt="card-img-top">
+			</div>
+			{% else %}
+			<div class="col-sm-2">
+				{# <img class="card-img-top" src="{{vich_uploader_asset(annonce, 'photopath')  }}" style="color:red; width:150px; height:auto" alt="card-img-top"> #}
+				<img class="card-img-top" src="/images/annonces/empty.png"
+					style="color:red; width:90%; height:auto" alt="card-img-top">
+			</div>
+			{% endif %}
+
+
+			<div class="col-sm-3">
+				<h5 class="card-title">
+					<a href="{{ path('annonce_show', {'id': annonce.id}) }}">{{annonce.title}}</a>
+				</h5>
+				</strong>
+				<strong>Prix</strong> {{annonce.price}} € </br>
+				<strong>Déposer le</strong> {{ annonce.updatedAt ? annonce.updatedAt|date('d-m-Y ') }}
+			</div>
+			<div class="col-sm-5">
+				{{annonce.description}}
+			</div>
+		</div>
+	</div>
+</div>

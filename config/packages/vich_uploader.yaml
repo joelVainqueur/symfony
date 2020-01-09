@@ -1,0 +1,9 @@
+vich_uploader:
+    db_driver: orm
+
+    mappings:
+        annonce_image:
+            uri_prefix: /images/annonces
+            upload_destination: '%kernel.project_dir%/public/images/annonces'
+            #generer une clé unique dans la base donnée pour chaque fichier uploader
+            namer: Vich\UploaderBundle\Naming\UniqidNamer
